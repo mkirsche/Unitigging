@@ -15,6 +15,21 @@ public class Graph {
 				adj[i][j] = new ArrayList<Edge>();
 			}
 	}
+	void sort()
+	{
+		for(ArrayList<Edge>[] edgeType : adj)
+			for(ArrayList<Edge> edgeList : edgeType)
+				Collections.sort(edgeList);
+	}
+	boolean sorted()
+	{
+		for(ArrayList<Edge>[] edgeType : adj)
+			for(ArrayList<Edge> edgeList : edgeType)
+				for(int i = 0; i<edgeList.size()-1; i++)
+					if(edgeList.get(i).compareTo(edgeList.get(i+1)) > 0)
+						return false;
+		return true;
+	}
 	void addEdge(Edge e)
 	{
 		int type = e.getType();

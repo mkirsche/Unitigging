@@ -6,6 +6,9 @@ public class TransitiveEdgeRemoval {
 @SuppressWarnings("unchecked")
 static Graph removeTransitiveEdges(Graph graph)
 {
+	// Sort the list of edges for each string-type pair for fast edge lookups
+	if(!graph.sorted()) graph.sort();
+	
 	int n = graph.n;
 	Graph res = new Graph(n);
 	// Iterate over f, the first node in a f-g-h f-h transitive relationship

@@ -11,8 +11,8 @@ static void singleStrandTestTransitiveEdgeRemoval()
 	int[] startPos = new int[] {30, 80, 0, 50, 35};
 	
 	Graph g = new Graph(n);
-	for(int i = 0; i<n; i++)
-		for(int j = i+1; j<n; j++)
+	for(int i = n-1; i>=0; i--)
+		for(int j = n-1; j>i; j--)
 		{
 			int endi = startPos[i] + lengths[i];
 			int endj = startPos[j] + lengths[j];
