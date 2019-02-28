@@ -30,11 +30,15 @@ public class Graph {
 						return false;
 		return true;
 	}
+	static int swapBits(int x)
+	{
+		return ((x&1) << 1) | ((x&2) >> 1);
+	}
 	void addEdge(Edge e)
 	{
 		int type = e.getType();
 		adj[type][e.from].add(e);
-		adj[type][e.to].add(e.reverse());
+		adj[swapBits(type)][e.to].add(e.reverse());
 	}
 	public String toString()
 	{
@@ -44,6 +48,11 @@ public class Graph {
 			res.append("Edges from " + i + "\n");
 			for(int j = 0; j<4; j++)
 			{
+				if(adj[j][i].size() == 0)
+				{
+					continue;
+				}
+				res.append("Type " + j + "\n");
 				for(Edge e : adj[j][i])
 				{
 					res.append(e.toString() + "\n");
@@ -56,7 +65,7 @@ static class Edge implements Comparable<Edge>
 {
 	int from, to;
 	double length;
-	double myHang, theirHang;
+	int myHang, theirHang;
 	boolean mySuffix, theirSuffix;
 	Edge(){}
 	Edge(int from, int to, double length)

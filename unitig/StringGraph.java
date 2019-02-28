@@ -4,7 +4,6 @@ import java.io.*;
 public class StringGraph extends Graph {
 	
 	HashMap<String, Integer> idMap;
-	int curId;
 	StringGraph(StringMap map)
 	{
 		super(map.n);
@@ -59,6 +58,11 @@ public class StringGraph extends Graph {
 		{
 			n = 0;
 			map = new HashMap<String, Integer>();
+		}
+		StringMap(HashMap<String, Integer> map, int n)
+		{
+			this.map = map;
+			this.n= n;
 		}
 		void addReadNamesFromPafLine(String pafLine)
 		{
