@@ -36,6 +36,10 @@ public class StringGraph extends Graph {
 		addEdge(e);
 		return true;
 	}
+	public String toString()
+	{
+		return idMap + "\n" + super.toString();
+	}
 	static class StringMap
 	{
 		HashMap<String, Integer> map;
@@ -70,6 +74,10 @@ public class StringGraph extends Graph {
 			String a = comps[0], b = comps[5];
 			if(!map.containsKey(a)) map.put(a, n++);
 			if(!map.containsKey(b)) map.put(b, n++);
+		}
+		void addRead(String s)
+		{
+			if(!map.containsKey(s)) map.put(s, n++);
 		}
 	}
 }
