@@ -59,6 +59,16 @@ public class ChunkGraph extends Graph {
 	@SuppressWarnings("unchecked")
 	void merge(int i, int j, Edge e, boolean reverse)
 	{
+		if(readList[i].size() > 0 && readList[i].get(0) == e.from)
+		{
+			// first list must be reversed
+			Collections.reverse(readList[i]);
+			Collections.reverse(overlapList[i]);
+			for(InnerOverlap io : overlapList[i])
+			{
+				io.reverse();
+			}
+		}
 		// First reverse j's read list if needed read lists
 		ArrayList<Integer> jList = readList[j];
 		if(reverse) Collections.reverse(jList);
@@ -139,6 +149,7 @@ public class ChunkGraph extends Graph {
 		// Finally, update read lists
 		readList[i].addAll(jList);
 		readList[j].clear();
+		
 	}
 	
 	public String toString()
@@ -153,7 +164,7 @@ public class ChunkGraph extends Graph {
 			res.append("Chunk ID " + i + "\n");
 			res.append("Vertex IDs in chunk:\n" + readList[i] + "\n");
 			res.append("Edges connecting vertices in chunk:\n" + overlapList[i] + "\n");
-			res.append("Edges to reads in other chunks\n");
+			res.append("Edges to reads in other chunks:\n");
 			for(int type = 0; type<adj.length; type++)
 			{
 				if(adj[type][i].size() == 0)

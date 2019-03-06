@@ -40,18 +40,24 @@ public static ChunkGraph uniqueJoins(Graph g)
 			if(cur.theirSuffix)
 			{
 				if(suffixJoined[cur.to]) continue;
-				suffixJoined[cur.to] = true;
 				sharedUnique |= uniqueSuffix[cur.to] != null && uniqueSuffix[cur.to].compareTo(cur.reverse()) == 0;
 			}
 			else
 			{
 				if(prefixJoined[cur.to]) continue;
-				prefixJoined[cur.to] = true;
 				sharedUnique |= uniquePrefix[cur.to] != null && uniquePrefix[cur.to].compareTo(cur.reverse()) == 0;
 			}
 			
 			if(sharedUnique)
 			{
+				if(cur.theirSuffix)
+				{
+					suffixJoined[cur.to] = true;
+				}
+				else
+				{
+					prefixJoined[cur.to] = true;
+				}
 				prefixJoined[i] = true;
 				res.merge(res.chunkId[i], res.chunkId[cur.to], uniquePrefix[i], cur.to != res.readList[res.chunkId[cur.to]].get(0));
 			}
@@ -67,18 +73,24 @@ public static ChunkGraph uniqueJoins(Graph g)
 			if(cur.theirSuffix)
 			{
 				if(suffixJoined[cur.to]) continue;
-				suffixJoined[cur.to] = true;
 				sharedUnique |= uniqueSuffix[cur.to] != null && uniqueSuffix[cur.to].compareTo(cur.reverse()) == 0;
 			}
 			else
 			{
 				if(prefixJoined[cur.to]) continue;
-				prefixJoined[cur.to] = true;
 				sharedUnique |= uniquePrefix[cur.to] != null && uniquePrefix[cur.to].compareTo(cur.reverse()) == 0;
 			}
 			
 			if(sharedUnique)
 			{
+				if(cur.theirSuffix)
+				{
+					suffixJoined[cur.to] = true;
+				}
+				else
+				{
+					prefixJoined[cur.to] = true;
+				}
 				suffixJoined[i] = true;
 				res.merge(res.chunkId[i], res.chunkId[cur.to], uniqueSuffix[i], cur.to != res.readList[res.chunkId[cur.to]].get(0));
 			}

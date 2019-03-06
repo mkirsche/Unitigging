@@ -7,6 +7,7 @@ public static void main(String[] args)
 {
 	containmentRemovalTest();
 	singleStrandTestUniqueJoinCollapsing();
+	seqTest();
 }
 static StringGraph makeTestGraph2()
 {
@@ -45,12 +46,11 @@ static StringGraph makeTestGraph2()
 		}
 	return g;
 }
+static int n = 5;
+static int[] lengths = new int[] {10, 20, 30, 40, 50};
+static int[] startPos = new int[] {29, 80, 0, 50, 35};
 static Graph makeTestGraph()
 {
-	int n = 5;
-	int[] lengths = new int[] {10, 20, 30, 40, 50};
-	int[] startPos = new int[] {30, 80, 0, 50, 35};
-	
 	Graph g = new Graph(n);
 	for(int i = n-1; i>=0; i--)
 		for(int j = n-1; j>i; j--)
@@ -87,6 +87,23 @@ static void containmentRemovalTest()
 	StringGraph updated = RemoveContainedNodes.removeContainedNodes(g);
 	System.out.println("Graph without contained nodes:");
 	System.out.println(updated);
+}
+static void seqTest()
+{
+	String genome = "";
+	for(int i = 0; i<20; i++) genome = genome + "ACGTA";
+	System.out.println("Genome:\n"+genome);
+	String[] reads = new String[n];
+	for(int i = 0; i<n; i++) reads[i] = genome.substring(startPos[i], startPos[i] + lengths[i]);
+	Graph g = makeTestGraph();
+	Graph updated = TransitiveEdgeRemoval.removeTransitiveEdges(g);
+	ChunkGraph collapsed = UniqueJoinCollapsing.uniqueJoins(updated);
+	ConstructSequences.Assembly a = ConstructSequences.produceAssembly(collapsed, reads);
+	System.out.println("Assembly:");
+	for(String s : a.unitigs)
+	{
+		System.out.println(s);
+	}
 }
 static void singleStrandTestTransitiveEdgeRemoval()
 {
