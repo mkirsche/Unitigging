@@ -1,3 +1,10 @@
+/*
+ * Sequence construction module of unitigging
+ * 
+ * Given a compressed string graph and reads it represents, produce the unitig sequence
+ * for each node in the graph 
+ */
+
 package unitig;
 
 import java.io.File;

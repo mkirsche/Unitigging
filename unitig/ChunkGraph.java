@@ -48,7 +48,6 @@ public class ChunkGraph extends Graph {
 	/*
 	 * Appends chunk in vertex j to chunk in vertex i with an overlap from edge e
 	 * If reverse is true, the reads in vertex j are added in reverse order
-	 * TODO Infer whether or not reverse is true based on the edge
 	 * 
 	 * A few invariants should be maintained:
 	 *   Every read x in readList[i] should have chunkId[x] = r

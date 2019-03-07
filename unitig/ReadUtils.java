@@ -61,7 +61,7 @@ static boolean test(FileType ft, int[] lengths) throws IOException
 	return myLengths.toString().equals(trueLengths.toString());
 }
 /*
- * Generaets a random read of a fixed length for testing purposes
+ * Generates a random read of a fixed length for testing purposes
  */
 static String randomRead(int length, int seed)
 {
@@ -97,6 +97,9 @@ static OrderedFrequencyMap<Integer> getLengths(String fn) throws IOException
 	}
 	return res;
 }
+/*
+ * Scans in the name of the next read
+ */
 public static String getName(PeekableScanner input, FileType ft)
 {
 	if(!input.hasNext())

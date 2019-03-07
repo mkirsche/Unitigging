@@ -1,4 +1,12 @@
+/*
+ * Transitive edge removal module of unitigging
+ * 
+ * For each edge e from a to b, if there is a path of length 2 which goes from a to b and uses
+ * the correct type of prefix/suffix edges, remove e from the graph
+ */
+
 package unitig;
+
 import java.util.*;
 public class TransitiveEdgeRemoval {
 	static double EPS = 0.1;

@@ -1,7 +1,13 @@
+/*
+ * Unique join collapsing module of unitigging
+ * 
+ * If an edge is the only prefix or only suffix overlap for both reads
+ * it connects, merge those reads' nodes into a single chunk.
+ */
+
 package unitig;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class UniqueJoinCollapsing {
 public static ChunkGraph uniqueJoins(Graph g)

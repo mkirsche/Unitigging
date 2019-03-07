@@ -1,3 +1,6 @@
+/*
+ * A StringGraph is a graph with the additional information mapping read names to nodes
+ */
 package unitig;
 import java.util.*;
 import java.io.*;

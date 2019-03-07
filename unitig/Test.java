@@ -9,6 +9,9 @@ public static void main(String[] args)
 	singleStrandTestUniqueJoinCollapsing();
 	seqTest();
 }
+/*
+ * Makes a test graph with a contained read
+ */
 static StringGraph makeTestGraph2()
 {
 	int n = 6;
@@ -46,6 +49,9 @@ static StringGraph makeTestGraph2()
 		}
 	return g;
 }
+/*
+ * The parameters for a set of reads which spans a genome of length 100 with simple overlap structure
+ */
 static int n = 5;
 static int[] lengths = new int[] {10, 20, 30, 40, 50};
 static int[] startPos = new int[] {29, 80, 0, 50, 35};
@@ -78,6 +84,9 @@ static Graph makeTestGraph()
 		}
 	return g;
 }
+/*
+ * Tests that contained reads are properly removed
+ */
 static void containmentRemovalTest()
 {
 	StringGraph g = makeTestGraph2();
@@ -88,6 +97,10 @@ static void containmentRemovalTest()
 	System.out.println("Graph without contained nodes:");
 	System.out.println(updated);
 }
+/*
+ * Tests the end-to-end unitigging on a simple example
+ * The assembled sequence should be exactly the genome or its reverse complement
+ */
 static void seqTest()
 {
 	String genome = "";
@@ -105,6 +118,9 @@ static void seqTest()
 		System.out.println(s);
 	}
 }
+/*
+ * Tests that the transitive edge removal module works on a simple example
+ */
 static void singleStrandTestTransitiveEdgeRemoval()
 {
 	Graph g = makeTestGraph();
@@ -116,6 +132,9 @@ static void singleStrandTestTransitiveEdgeRemoval()
 	System.out.println("Graph without transitive edges:");
 	System.out.println(updated);
 }
+/*
+ * Tests that the unique join collapsing module works on a simple example
+ */
 static void singleStrandTestUniqueJoinCollapsing()
 {
 	Graph g = makeTestGraph();

@@ -1,3 +1,9 @@
+/*
+ * Contained node removal module of unitigging
+ * 
+ * For each node, if it is contained in another node, remove that node and all of its edges.
+ */
+
 package unitig;
 
 import java.util.ArrayList;
